@@ -1,0 +1,63 @@
+
+<div *ngIf="role=='Admin'">
+    <app-admin-nav></app-admin-nav>
+    <h4 style="margin-top:50px; text-align: center; color: whitesmoke;">Payments</h4>
+    <table class="table table-striped table-bordered text-center" style="margin-top:50px">
+        <thead style="background-color: darkgrey;">
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Total Amount</th>
+            <th>Amount Paid</th>
+            <th>Payment Date</th>
+            <th>Mode Of Payment</th>
+            <th>Event Type</th>
+            <th>Venue Details</th>
+        </tr>
+    </thead>
+
+    <tbody>
+     
+        <tr *ngFor="let i of payments">
+            <td>{{i.user.userName}}</td>
+            <!-- <td>{{i.userId}}</td> -->
+            <td>{{i.status}}</td>
+            <td>{{i.totalAmount}}</td>
+            <td>{{i.amountToPay}}</td>
+            <td>{{i.paymentDate | date}}</td>
+            <td>{{i.modeOfPayment}}</td>
+            <td>{{i.booking?.eventType}}</td>
+            <td>{{i.booking?.venueDetails}}</td>
+        </tr>
+    </tbody>
+    </table>
+</div>
+ 
+<div class="wrapper" *ngIf="role=='Organizer'">
+    <app-org-nav></app-org-nav>
+    <h4 style="margin-top:50px; text-align: center; color: whitesmoke;">Payments</h4>
+    <table class="table table-striped table-bordered text-center" style="margin-top:50px; margin-right: 0 !important; padding-right: 0 !important; border: solid 1px;">
+        <thead style="background-color: darkgrey;">
+        <tr>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Total Amount</th>
+            <th>Amount Paid</th>
+            <th>Payment Date</th>
+            <th>Mode Of Payment</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr *ngFor="let i of payments">
+            <td>{{uName}}</td>
+            <td>{{i.status}}</td>
+            <td>{{i.totalAmount}}</td>
+            <td>{{i.amountToPay}}</td>
+            <td>{{i.paymentDate | date}}</td>
+            <td>{{i.modeOfPayment}}</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+

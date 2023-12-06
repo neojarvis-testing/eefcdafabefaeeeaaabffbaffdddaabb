@@ -1,0 +1,22 @@
+<app-admin-nav></app-admin-nav>
+<h4 style="margin-top:50px; text-align: center; color: whitesmoke;">All Venues</h4>
+<div class="container">
+    <div class="table-responsive">
+        
+        <table class=" table table-striped table-bordered text-center"  style="margin-top:40px">
+            <thead style="background-color: darkgrey;">
+                <th>Venue Details</th>
+                <th>Action</th>
+            </thead>
+            <tbody>
+            <tr *ngFor="let i of venueData">
+               
+                <td>{{i.venueDetails}}</td>
+                
+                <td><button class="btn btn-primary" [routerLink]="['/EditVenue',i.venueId]">Edit</button></td>
+            </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-primary" routerLink="/AddVenue">Add Venue</button>
+    </div>
+</div>

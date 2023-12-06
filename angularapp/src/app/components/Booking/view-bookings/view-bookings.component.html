@@ -1,0 +1,49 @@
+<app-org-nav></app-org-nav>
+<h4 style="margin-top:50px; text-align: center; color: whitesmoke;">Your Bookings</h4>
+<table class="table table-striped table-bordered text-center"  style="margin-top:50px">
+    <thead style="background-color: darkgrey;">
+       
+        <td>Submission Date</td>
+        <td>Event Date</td>
+        <td>Description</td>
+        <td>Status</td>
+        <td>Event Type</td>
+        <td>Venue Details</td>
+        <td>Head Count</td>
+        <!-- <td>Amount</td> -->
+        <td>Action</td>
+        <td>Payments</td>
+    </thead>
+    <tbody>
+    <tr *ngFor="let b of booking">
+       
+        <td>{{b.submissionDate | date}}</td>
+        <td>{{b.eventDate | date}}</td>
+        <td>{{b.description}}</td>
+ 
+        <td *ngIf="b.bookingStatus==1" class="text text-warning">Pending</td>
+        <td *ngIf="b.bookingStatus==2" class="text text-info">Verified</td>
+        <td *ngIf="b.bookingStatus==3" class="text text-success">Booked</td>
+        <td *ngIf="b.bookingStatus==4" class="text text-primary">Confirmed</td>
+        <td *ngIf="b.bookingStatus==5" class="text text-primary">Wait For Confirmation</td>
+        <td *ngIf="b.bookingStatus==6" class="text text-primary">Wait For Finalisation</td>
+        <!-- <p *ngIf="b.bookingStatus==10" class="text text-danger" >Wait For Verification</p>  -->
+       
+        <td>{{b.eventType}}</td>
+        <td>{{b.venueDetails}}</td>
+        <td>{{b.headCount}}</td>
+        <!-- <td>{{b.amount}}</td> -->
+        <td><button class="btn btn-danger" [routerLink]="['/cancel',b.eventType,b.bookingStatus,b.bookingID]">Cancel</button></td>
+        <td>
+            <p *ngIf="b.bookingStatus==1" class="text text-danger" >Verification Pending</p>  
+            <p *ngIf="b.bookingStatus==5" class="text text-danger" >Wait For Confirmation</p>  
+            <p *ngIf="b.bookingStatus==6" class="text text-primary" >Wait For Finalisation</p>  
+        <a *ngIf="b.bookingStatus==2" [routerLink]="['/twenty',b.eventType,b.bookingID]"><button class="btn btn-secondary" style="width: 100%;">Payment</button></a>
+ 
+        <!-- <a *ngIf="b.bookingStatus==2" class="btn btn-warning" [routerLink]="['/twenty',b.eventType]">Payment(20)</a> -->
+        <a *ngIf="b.bookingStatus==3" [routerLink]="['/eighty',b.eventType,b.bookingID]"><button class="btn btn-primary" style="width: 100%;">Payment</button></a>
+        <p *ngIf="b.bookingStatus==4" class="text text-success" >Payment Completed</p>
+    </td>
+    </tr>
+</tbody>
+</table>

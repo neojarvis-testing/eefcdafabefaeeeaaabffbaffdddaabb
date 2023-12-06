@@ -1,0 +1,6 @@
+table{
+    border: 4px solid black;
+}
+.winner__table{
+    white-space: nowrap;
+}

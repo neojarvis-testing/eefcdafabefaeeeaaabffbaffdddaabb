@@ -1,0 +1,58 @@
+<app-admin-nav></app-admin-nav>
+<h4 style="margin-top:50px; text-align: center; color: whitesmoke;">All Bookings</h4>
+<br>
+<table class="table table-striped table-bordered text-center"  style="margin-top:10px">
+    <thead style="background-color: darkgrey;">
+        <!-- <td>Booking Id</td> -->
+        <th>Name</th>
+        <th>Submission Date</th>
+        <th>Event Date</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>Event</th>
+        <th>Venue Details</th>
+        <th>Head Count</th>
+        <!-- <th>Amount</th> -->
+        <th>Update</th>
+        <th>Delete</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let b of booking">
+ 
+        <!-- <td>{{b.bookingID}}</td> -->
+        <td>{{b.userName}}</td>
+        <td>{{b.submissionDate | date}}</td>
+        <td>{{b.eventDate | date}}</td>
+        <td>{{b.description}}</td>
+        
+       
+        <td *ngIf="b.bookingStatus==1" class="text text-warning">Pending</td>
+        <td *ngIf="b.bookingStatus==2" class="text text-info">Verified</td>
+        <td *ngIf="b.bookingStatus==3" class="text text-success">Booked</td>
+        <td *ngIf="b.bookingStatus==4" class="text text-primary">Confirmed</td>
+        <td *ngIf="b.bookingStatus==5" class="text text-primary">20% Amount Paid</td>
+        <td *ngIf="b.bookingStatus==6" class="text text-primary">100% Amount Paid</td>
+       
+        <td>{{b.eventType}}</td>
+        <td>{{b.venueDetails}}</td>
+        <td>{{b.headCount}}</td>
+        <!-- <td>{{b.amount}}</td> -->
+        <td>
+            <form #f="ngForm" (ngSubmit)="submit(f, b.bookingID)">
+               
+                <select class="form-select"  id="bookingStatus" name="bookingStatus" ngModel>
+                  <option value="" disabled selected>Status</option>
+                  <option value="1">Pending</option>
+                  <option value="2">Verified</option>
+                  <option value="3">Booked</option>
+                  <option value="4">Confirmed</option>
+                </select>
+               
+                <button type="submit" class="btn btn-success" style="width: 100%; margin-top: 5px;">Update</button>
+               
+              </form>
+        </td>
+        <td><button class="btn btn-danger" [disabled]="b.bookingStatus>1" (click)="DeleteBooking(b.bookingID)">Delete</button></td>
+    </tr>
+</tbody>
+</table>

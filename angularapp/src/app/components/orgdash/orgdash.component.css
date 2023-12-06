@@ -1,0 +1,16 @@
+.container{
+    margin-top: 20px;
+}
+.custom-card{
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: calc(85%);
+}
+.custom-card:hover{
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+    opacity: calc(100%);
+}
+*
+{
+    transition: 0.25s ease-out;
+}

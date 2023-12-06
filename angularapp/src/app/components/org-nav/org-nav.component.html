@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    <a routerLink="/orgdash" style="text-decoration: none;"><h5 class="navbar-brand">Organizer Dashboard</h5></a>
+   
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a routerLink="/addBooking" class="nav-link" >Booking Form</a>
+        <a routerLink="/viewBookings" class="nav-link" >View Bookings</a>
+        <a routerLink="/viewPayment" class="nav-link" >View Payments</a>
+      </div>
+    </div>
+
+    <div>
+      <i><h4 style="display: inline-block;">Hello, {{Uname}}</h4></i>
+      <span> &nbsp; </span><span> &nbsp; </span><span> &nbsp; </span>
+      <button class="btn btn-danger" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

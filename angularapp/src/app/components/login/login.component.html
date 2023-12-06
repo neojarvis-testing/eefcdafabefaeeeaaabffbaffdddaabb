@@ -1,0 +1,44 @@
+<img class="bgImg" src="assets/confetti.png" alt="">
+<div class="main-bg">
+
+    <div class="login-container text-c animated flipInX">
+        <div>
+            <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+        </div>
+
+        <h3 class="text-Title">Welcome To TECH-NOCRAT Party Organizers 🎉</h3>
+        <br>
+        <div class="container-content">
+            <form [formGroup]="loginForm" class="margin-t">
+                <div class="form-group">
+                    <input formControlName="email" name="email" type="email" placeholder="Email" class="form-control">
+                    <div *ngIf="loginForm.get('email').touched && loginForm.get('email').invalid"
+                        class="text text-danger">
+                        <div *ngIf="loginForm.get('email').errors.required">
+                            <small> *Email is required.</small>
+                        </div>
+                        <div *ngIf="loginForm.get('email').errors.email">
+                            <small>*Please enter a correct email.</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input formControlName="password" type="password" placeholder="Password" class="form-control">
+                    <div *ngIf="loginForm.get('password').hasError('required') && loginForm.get('password').touched"
+                        class="text text-danger">
+                        <small> *Password is required </small>
+                    </div>
+                </div>
+
+                <button (click)="onLogin()" type="submit" [disabled]="loginForm.invalid"
+                    class="form-button button-l margin-b naam">Login</button>
+                <div class="form-group">
+                    <a routerLink="/forget" class="text-darkyellow"><small>Forgot Password</small></a>
+                    <p class="text-whitesmoke text-center" style="margin-top: 20px; padding-bottom: 0 !important; margin-bottom: 0 !important;"><small>Do not have an account?</small></p>
+                    <a class="text-darkyellow" routerLink="/signup"><small> Sign Up</small></a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

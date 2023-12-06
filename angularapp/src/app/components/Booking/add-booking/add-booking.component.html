@@ -1,0 +1,97 @@
+<app-org-nav></app-org-nav>
+
+<div class="cover">
+    <div class="wrap">
+<form [formGroup] = "bookingForm" (ngSubmit)="onSubmit()">
+ 
+    <div class="form-header">
+        <h2>Add Booking</h2>
+    </div>
+    <div class="form-body">
+        <fieldset>
+        
+        <div class="form-group" style="display: none;">
+            <label for="userId" class="form-label" >User ID</label>
+            <input type="number" class="form-control" id="userId" [(ngModel)]="user.userId" formControlName="userId" readonly />
+            <div *ngIf="bookingForm.get('userId').hasError('required')  && bookingForm.get('userId').touched" class="text text-danger">UserID is Required</div>
+        </div>
+        
+        <div  class="form-group">
+            <label for="userName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="userName" [(ngModel)]="user.userName" formControlName="userName" readonly/>
+            <div *ngIf="bookingForm.get('userName').hasError('required')  && bookingForm.get('userName').touched" class="text text-danger">UserName is Required</div>
+        </div>
+        
+        <div  class="form-group">
+            <label for="submissionDate" class="form-label">Submission Date</label>
+            <input type="date" class="form-control" id="submissionDate" formControlName="submissionDate" disabled />
+            <!-- <div *ngIf="bookingForm.get('submissionDate').hasError('required') && bookingForm.get('submissionDate').touched" class="text text-danger">Submission Date is Required</div> -->
+        </div>
+
+
+        <div class="form-group" style="display: none;">
+            <label for="bookingStatus" class="form-label">bookingStatus</label>
+            <input type="number" class="form-control" id="bookingStatus" formControlName="bookingStatus"/>
+
+        </div>
+
+        <div class="form-group">
+            <label for="description" class="form-label">Description</label>
+            <textarea type="text" class="form-control" id="description" formControlName="description" maxlength="101"></textarea>
+            <div *ngIf="bookingForm.get('description').touched && bookingForm.get('description').invalid" class="text text-danger">
+                <div *ngIf="bookingForm.get('description').errors.required">
+                    *Description is required.
+                </div>
+                <div *ngIf="bookingForm.get('description').errors.maxlength">
+                    *Word limit exceed
+                </div>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="eventType" class="form-label">Event Type And Charges</label>
+            <select class="form-select" formControlName="eventType">
+                <option value="" disabled selected>Select Event Type</option>
+                <option *ngFor="let i of eventList;" [value]="i.eventType">{{i.eventType}}, ₹{{i.charges}}</option>  
+            </select>
+            <div *ngIf="bookingForm.get('eventType').hasError('required')  && bookingForm.get('eventType').touched" class="text text-danger">Event Type And Charges is required</div>
+        </div>
+
+        <div class="form-group">
+            <label for="eventDate" class="form-label">Event Date</label>
+            <input type="date" class="form-control" id="eventDate" formControlName="eventDate"/>
+            <div *ngIf="bookingForm.hasError('dateDifferenceInvalid') && bookingForm.get('eventDate').touched" style="color: red;">
+                Minimum 5 days difference is required.
+            </div>
+        </div>
+    
+        <div class="form-group">
+            <label for="headCount" class="form-label">Head Count</label>
+            <input type="number" class="form-control" id="headCount" formControlName="headCount"/>
+            <div *ngIf="bookingForm.get('headCount').hasError('required') && bookingForm.get('headCount').touched" class="text text-danger">Head Count is Required</div>
+        </div>
+        
+    
+        <div class="form-group">
+            <label for="venueDetails" class="form-label">Venue Details</label>
+            <select class="form-select"  formControlName="venueDetails">
+                <option value="" disabled selected>Select Venue Details</option>
+                <option *ngFor="let i of venueList;" [value]="i.venueDetails">{{i.venueDetails}}</option>
+            </select>
+            <div *ngIf="bookingForm.get('venueDetails').hasError('required')  && bookingForm.get('venueDetails').touched" class="text text-danger">Venue is Required</div>
+        </div>
+
+    </fieldset>
+</div>
+ 
+        <div class="form-footer">
+        <button type="submit" [disabled]="bookingForm.invalid" class="btn btn-primary">Submit</button>
+        &nbsp; 
+                <button class="btn btn-danger" routerLink="/orgdash" >Cancel</button>
+   </div>
+    
+ 
+</form>
+</div>
+</div>

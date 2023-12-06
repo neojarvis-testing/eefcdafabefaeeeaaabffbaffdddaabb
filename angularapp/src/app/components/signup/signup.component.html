@@ -1,0 +1,80 @@
+<img class="bgImg" src="assets/confetti.png" alt="">
+<body class="main-bg">
+    <div class="login-container text-c animated flipInX">
+        <div>
+            <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
+        </div>
+        <h4 class="text-Title">The key to happiness is to Sign In 🎉</h4>
+    
+
+    <div class="container-content">
+<form [formGroup]="signUpForm" class="margin-t">
+    <div class="form-group">
+        <input class="form-control" formControlName="userName" name="userName" type="text" placeholder="Username">
+        <div *ngIf="signUpForm.get('userName').hasError('required') && signUpForm.get('userName').touched" class="text text-danger">
+            *Username is required
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <input class="form-control" formControlName="password" type="password" placeholder="Password">
+        <div *ngIf="signUpForm.get('password').touched && signUpForm.get('password').invalid" class="text text-danger">
+            <div *ngIf="signUpForm.get('password').errors.required">
+                *Password is required.
+            </div>
+            <div *ngIf="signUpForm.get('password').errors.pattern">
+                *Password should include atleast an uppercase character, a lowercase character, a number and a special character
+            </div>
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <input class="form-control" formControlName="cpassword" type="password" placeholder="Confirm Password">
+        <div
+        *ngIf="signUpForm.hasError('mismatch')" class="text text-danger" >
+        *Passwords do not match
+        </div>
+    </div>
+       
+    <div class="form-group">
+        <input class="form-control" formControlName="email" type="email" placeholder="Email">
+        <div *ngIf="signUpForm.get('email').touched && signUpForm.get('email').invalid" class="text text-danger">
+            <div *ngIf="signUpForm.get('email').errors.required">
+                *Email is required.
+            </div>
+            <div *ngIf="signUpForm.get('email').errors.pattern">
+                *Please enter a correct email.
+            </div>
+        </div>
+    </div>
+   
+    <div class="form-group">
+        <input class="form-control" formControlName="mobileNumber" type="text" placeholder="Mobile Number">
+        <div *ngIf="signUpForm.get('mobileNumber').touched && signUpForm.get('mobileNumber').invalid" class="text text-danger">
+            <div *ngIf="signUpForm.get('mobileNumber').errors.required">
+                *Mobile number is required.
+            </div>
+            <div *ngIf="signUpForm.get('mobileNumber').errors.pattern">
+                *Please enter a 10 digit mobile number
+            </div>
+        </div>
+    </div>
+   
+    <div>
+        <select formControlName="userRole" class="form-select" style="color: #171717 !important;">
+            <option value="" disabled selected>Select Role</option>
+            <option value="Admin">Admin</option>
+            <option value="Organizer">Organizer</option>
+        </select>
+        <div *ngIf="signUpForm.get('userRole').hasError('required') && signUpForm.get('userRole').touched" class="text text-danger">
+            *Role is required
+        </div>
+    </div>
+   
+    <button (click)="onSignUp()" type="submit" [disabled]="signUpForm.invalid" class="form-button button-l margin-b naam">Sign Up</button>
+    <p class="text-whitesmoke text-center"><small>Already a user?</small></p>
+    <a class="text-darkyellow" routerLink="/login">Login</a>
+</form>
+</div>
+</div>
+</body>

@@ -1,0 +1,108 @@
+<app-admin-nav></app-admin-nav>
+
+<div class="cover">
+    <div class="wrap">
+        <form [formGroup]="eventform" (ngSubmit)="savedata(eventform)">
+            <div class="form-header">
+                <h2>Add Event</h2>
+            </div>
+            <div class="form-body">
+                <fieldset>
+
+
+                    <div class="form-group">
+                        <label for="eventType">Event Type</label>
+                        <input type="text" id="eventType" name="eventType" formControlName="eventType"
+                            class="form-control">
+                        <div *ngIf="eventform.get('eventType').touched && eventform.get('eventType').invalid"
+                            class="text text-danger">
+                            <div *ngIf="eventform.get('eventType').errors.required">
+                                <small> *Event Type is required </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <!-- <input type="description" id="description" name="description" formControlName="description" class="form-control"> -->
+                        <textarea type="text" class="form-control" id="description" formControlName="description"
+                            maxlength="101"></textarea>
+                        <div *ngIf="eventform.get('description').touched && eventform.get('description').invalid"
+                            class="text text-danger">
+                            <div *ngIf="eventform.get('description').errors.required">
+                                <small> *Description is required</small>
+                            </div>
+                            <div *ngIf="eventform.get('description').errors.maxlength">
+                                <small> *Word limit exceed</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="package">Package</label>
+                        <!-- <input type="package" id="package" name="package" formControlName="package" class="form-control"> -->
+                        <select class="form-select" id="package" name="package" formControlName="package">
+                            <option value="" disabled selected>Select Package</option>
+                            <option value="Friends">Friends</option>
+                            <option value="Family">Family</option>
+                            <option value="Couples">Couples</option>
+                            <option value="Singles">Singles</option>
+                            <option value="Colleagues">Colleagues</option>
+                            <option value="All">All</option>
+                        </select>
+                        <div *ngIf="eventform.get('package').touched && eventform.get('package').invalid"
+                            class="text text-danger">
+                            <div *ngIf="eventform.get('package').errors.required">
+                                <small> *Package is required </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="participantCount">Participant Count</label>
+                        <!-- <input type="participantCount" id="participantCount" name="participantCount" formControlName="participantCount" class="form-control"> -->
+                        <select class="form-select" id="participantCount" name="participantCount"
+                            formControlName="participantCount">
+                            <option value="" disabled selected>Select Range</option>
+                            <option value="0-50">0-50</option>
+                            <option value="50-150">50-150</option>
+                            <option value="150-300">150-300</option>
+                            <option value="300-450">300-450</option>
+                            <option value="450-600">450-600</option>
+                            <option value="600-750">600-750</option>
+                            <option value="750-900">750-900</option>
+                            <option value="900-1000">900-1000</option>
+                            <option value="More Than 1000">More Than 1000</option>
+                        </select>
+                        <div *ngIf="eventform.get('participantCount').touched && eventform.get('participantCount').invalid"
+                            class="text text-danger">
+                            <div *ngIf="eventform.get('participantCount').errors.required">
+                                <small> *Participant Count is required </small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="charges">Charges</label>
+                        <input type="number" id="charges" name="charges" formControlName="charges" class="form-control">
+                        <div *ngIf="eventform.get('charges').touched && eventform.get('charges').invalid"
+                            class="text text-danger">
+                            <div *ngIf="eventform.get('charges').errors.required">
+                                <small> *Charges is required </small>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </fieldset>
+            </div>
+
+            <div class="form-footer">
+                <button type="submit" class="btn btn-info">Save</button>
+                &nbsp; 
+                <button class="btn btn-danger" routerLink="/dashboard" >Cancel</button>
+            </div>
+
+        </form>
+    </div>
+</div>

@@ -1,0 +1,34 @@
+<app-admin-nav></app-admin-nav>
+<div class="cover">
+    <div class="wrap">
+
+
+<form [formGroup]="venueform" (ngSubmit)="savedata(venueform)">
+    <div class="form-header">
+        <h2>Add Venue</h2>
+    </div>
+    <div class="form-body">
+        <fieldset>
+        
+        <div class="form-group">
+            <label for="venueDetails">Venue Details</label>
+            <input type="text" id="venueDetails" name="venueDetails" formControlName="venueDetails" class="form-control">
+            <div *ngIf="venueform.get('venueDetails').touched && venueform.get('venueDetails').invalid"
+                            class="text text-danger">
+                            <div *ngIf="venueform.get('venueDetails').errors.required">
+                                <small> *Venue Details are required </small>
+                            </div>
+                        </div>
+        </div>
+        
+        </fieldset>
+        </div>
+       <div class="form-footer">
+        <button type="submit" class="btn btn-info">Save</button>
+        &nbsp; 
+                <button class="btn btn-danger" routerLink="/dashboard" >Cancel</button>
+</div>
+   
+</form>
+</div>
+</div>

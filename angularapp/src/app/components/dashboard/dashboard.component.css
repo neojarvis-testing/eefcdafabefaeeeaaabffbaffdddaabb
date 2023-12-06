@@ -1,0 +1,10 @@
+/* body
+{
+    background-image: url("https://t3.ftcdn.net/jpg/06/03/22/82/360_F_603228226_Fx1467bsxuL08QWhci1RpFmboS6NimRM.jpg");
+} */
+
+.bgImg {
+    position: absolute;
+    width: 100%;
+    /* background-size: cover; */
+}

@@ -1,0 +1,76 @@
+<app-org-nav></app-org-nav>
+
+<div class="cover">
+    <div class="wrap">
+
+        <form [formGroup]="paymentForm" (ngSubmit)="pay()">
+
+            <div class="form-header">
+                <h2>Payment</h2>
+            </div>
+            <div class="form-body">
+                <fieldset>
+
+                    <div style="display: none;">
+                        <input type="number" name="userId" [(ngModel)]="id" formControlName="userId" readonly>
+                    </div>
+
+                    <div style="display: none;">
+                        <input type="number" name="bookingID" [(ngModel)]="bookID" formControlName="bookingID" readonly>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">Status</label>
+
+                        <input class="form-control" type="text" name="status" formControlName="status"
+                            [(ngModel)]="status" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>TotalAmount</label>
+
+                        <input class="form-control" type="number" name="totalAmount" formControlName="totalAmount"
+                            [(ngModel)]="event.charges" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount To Pay</label>
+
+                        <input class="form-control" type="number" name="amountToPay" formControlName="amountToPay"
+                            [(ngModel)]="amountToPay" readonly>
+                    </div>
+                    <div class="form-group">
+                        <label>Payment Date</label>
+
+                        <input class="form-control" type="date" id="paymentDate" name="paymentDate"
+                            formControlName="paymentDate" disabled>
+                    </div>
+                    <!-- <input type="date" class="form-control" id="submissionDate" formControlName="submissionDate" disabled /> -->
+                    <!-- <span>modeOfPayment</span><input type="text" name="modeOfPayment" formControlName="modeOfPayment" ngModel>  -->
+                    <div class="form-group">
+                        <label for="" class="control-label">Payment Mode</label>
+
+                        <select class="form-select" id="modeOfPayment" name="modeOfPayment"
+                            formControlName="modeOfPayment" ngModel>
+                            <option value="" disabled selected>Select Payment Mode</option>
+                            <option value="Credit Card">Credit Card</option>
+                            <option value="Debit Card">Debit Card</option>
+                            <option value="UPI">UPI</option>
+                            <option value="Net Banking">Net Banking</option>
+                        </select>
+                        <div *ngIf="paymentForm.get('modeOfPayment').hasError('required') && paymentForm.get('modeOfPayment').touched" class="text text-danger">
+                            *Payment Mode is required
+                        </div>
+                    </div>
+
+                </fieldset>
+            </div>
+
+            <div class="form-footer">
+
+                <button type="submit" [disabled]="paymentForm.invalid" class="btn btn-success">Pay</button>
+                &nbsp; 
+                <button class="btn btn-danger" routerLink="/viewBookings" >Cancel</button>
+
+            </div>
+        </form>
+    </div>
+</div>

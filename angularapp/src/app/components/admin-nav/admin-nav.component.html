@@ -1,0 +1,26 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+   
+   
+    <a routerLink="/dashboard" style="text-decoration: none;" ><h5 class="navbar-brand">Admin Dashboard</h5></a>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a routerLink="/AddEvent" class="nav-link" >Add Event</a>
+        <a routerLink="/EventGet" class="nav-link" >All Events</a>
+        <a routerLink="/AddVenue" class="nav-link" >Add Venue</a>
+       
+        <a routerLink="/VenueGet" class="nav-link" >All Venues</a>
+        <a routerLink="/allBookings" class="nav-link" >All Bookings</a>
+        <a routerLink="/viewPayment" class="nav-link" >All Payments</a>
+       
+      </div>
+    </div>
+
+    <div>
+     <i><h4 style="display: inline-block;">Hello, {{Uname}}</h4></i>
+      <span> &nbsp; </span><span> &nbsp; </span><span> &nbsp; </span>
+      <button class="btn btn-danger" (click)="logout()">Logout</button>
+    </div>
+  </div>
+</nav>

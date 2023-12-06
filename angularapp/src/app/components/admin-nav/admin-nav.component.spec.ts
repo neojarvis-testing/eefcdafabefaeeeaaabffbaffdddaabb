@@ -23,4 +23,3 @@ describe('AdminNavComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-m kdf 
